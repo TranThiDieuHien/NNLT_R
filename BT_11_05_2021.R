@@ -22,15 +22,17 @@ for (i in 1:N){
 
 
 
-
-#Cau 2
+#Cau 2: Đêm 1: FoodTreatment = Satiated; Đêm 2: FoodTreatment = Deprived
 O$NestNight <- paste(O$ï..Nest, O$FoodTreatment,sep = "_") 
-head(O)
-AllNestsNights <- unique(O$NestNight)
-N <- length(AllNestsNights)
-for (i in 1:N){
-  NestNight.i <- as.character(AllNestsNights[i])
-  Oi <- O[O$NestNight ==NestNight.i,]
+FTM <- split(O, O$FoodTreatment)
+FoodTreatment_1 <- FTM[['Satiated']]
+head(FoodTreatment_1)
+n <- length(FoodTreatment_1)
+NestNight_1 <- FoodTreatment_1$NestNight
+AllNestsNights_1 <- unique(NestNight_1)
+for (i in 1:n){
+  NestNight.i <- as.character(AllNestsNights_1[i])
+  Oi <- FoodTreatment_1[FoodTreatment_1$NestNight == NestNight.i,]
   name <- NestNight.i
   name <- paste(NestNight.i, ".jpg", sep="")
   #jpeg(file = name)
