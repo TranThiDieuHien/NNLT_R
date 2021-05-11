@@ -4,12 +4,13 @@ names(O)
 str(O)
 
 #Cau 1
-AllNest <- unique(O$ï..Nest)
+AllNest <- unique(O$Ã¯..Nest)
 N <- length(AllNest)
 
 for (i in 1:N){
   Nest.i <- as.character(AllNest[i])
-  Oi <- O[O$ï..Nest == Nest.i,]?  name <- Nest.i
+  Oi <- O[O$Ã¯..Nest == Nest.i,]
+  name <- Nest.i
   name <- paste(Nest.i,".jpg", sep = "")
   #jpeg(file = AllNest[i])
   plot(x=Oi$ArrivalTime, y = Oi$SiblingNegotiation,
@@ -23,7 +24,7 @@ for (i in 1:N){
 
 
 #Cau 2
-O$NestNi?ht <- paste(O$ï..Nest, O$FoodTreatment,sep = "_") 
+O$NestNight <- paste(O$Ã¯..Nest, O$FoodTreatment,sep = "_") 
 head(O)
 AllNestsNights <- unique(O$NestNight)
 N <- length(AllNestsNights)
@@ -31,7 +32,7 @@ for (i in 1:N){
   NestNight.i <- as.character(AllNestsNights[i])
   Oi <- O[O$NestNight ==NestNight.i,]
   name <- NestNight.i
-  name?<- paste(NestNight.i, ".jpg", sep="")
+  name <- paste(NestNight.i, ".jpg", sep="")
   #jpeg(file = name)
   plot(x=O$ArrivalTime, y=O$NegPerChick,
        xlab ="Arrivale Time",
