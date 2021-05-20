@@ -51,39 +51,33 @@ Veg <- read.table(file = "Vegetation2.txt", header = TRUE)
 names(Veg)
 str(Veg)
 
-Richness <- rowSums(Veg[10:13])
-names(Richness) <- Veg[,1]
-Richness
-Veg_new <- data.frame(Richness, Veg$Transect)
-colnames(Veg_new)[2] <- "Transect"
-
-V.M <-tapply(Veg_new$Richness, 
-                INDEX=Veg_new$Transect, 
-                FUN=mean)
-V.sd <-tapply(Veg_new$Richness, 
-             INDEX=Veg_new$Transect, 
-             FUN=sd)
+V.M <-tapply(Veg$R, 
+             INDEX=Veg$Transect, 
+             FUN=mean)
+V.sd <-tapply(Veg$R, 
+              INDEX=Veg$Transect, 
+              FUN=sd)
 MSD <- cbind(V.M, V.sd)
 barplot(V.M)
 barplot(V.M, xlab = "Transect",
-         ylim = c(0,500),
-        ylab = "Richness",
+        ylim = c(0,15),
+        ylab = "R",
         col = rainbow(8)
 )
 
-Vth.le <- tapply(Veg_new$Richness,
-                   INDEX=Veg_new$Transect,
-                   FUN=length)
+Vth.le <- tapply(Veg$R,
+                 INDEX=Veg$Transect,
+                 FUN=length)
 V.se <- V.sd/sqrt(Vth.le)
 
 #Strip chart
-stripchart(Veg_new$Richness~Veg_new$Transect,
+stripchart(Veg$R~Veg$Transect,
            vert=TRUE,
            pch=1,
            method="jitter",
            jit=0.05,
            xlab="Transect",
-           ylab="Richness")
+           ylab="R")
 
 points(1:8, V.M, pch= 16,
        cex=1.5)
