@@ -22,6 +22,16 @@ par(mfrow= c(2,2), mar= c(3,3,2,1))
 #c=(1,4); c=(4,1)
 #mar=c(3,3,2,1): khoảng trắng giữa các biểu đồ
 #margin: bottom, left, top, right
+#Cài gói libary plotrix
+install.packages("plotrix")
+#Gọi thư viện plotrix
+library(plotrix)
+
+pie3D(Deaths, main = "3D Pie Chart",
+      explode=0.1,
+      labels = names(Deaths),
+      labelcex=0.6,
+)
 
 pie(Deaths, main = "Total Deaths Per Year",
     col = rainbow(6),
@@ -87,6 +97,4 @@ arrows(1:9, V.M,
        lwd=1.5,
        angle=90,
        length = 0.1)
-
-
 
